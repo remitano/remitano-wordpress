@@ -12,8 +12,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 define( 'REMI_PAYMENT_BUTTON_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
+define( 'REMI_PAYMENT_BUTTON_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+
 if ( ! class_exists( 'Remitano_Payment_Button' ) ) {
 	 require_once(REMI_PAYMENT_BUTTON_PLUGIN_PATH . 'includes/class-remitano-payment-button.php');
 }
