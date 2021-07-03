@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name: Remitano Pay Button
+ * Plugin Name: Remitano Payment Button
  * Plugin URI: https://developers.remitano.com
- * Description: Add Remitano Pay Button with shortcode in blog post and page
+ * Description: Add Remitano Payment Button with shortcode in blog post and page
  * Version: 1.0.0
  * Author: Remitano
  * Author URI: https://remitano.com
