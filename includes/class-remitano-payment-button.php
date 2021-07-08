@@ -136,20 +136,20 @@ class Remitano_Payment_Button {
 	public function default_button_style_callback() {
 		?> <select name="remitano_payment_button_options[default_button_style]" id="default_button_style">
 			<?php $selected = (isset( $this->remitano_payment_button_options['default_button_style'] ) && $this->remitano_payment_button_options['default_button_style'] === 'long-purple') ? 'selected' : '' ; ?>
-			<option value="long-purple" <?php echo $selected; ?>>Long Purple</option>
+			<option value="long-purple" <?php echo esc_attr( $selected ); ?>>Long Purple</option>
 			<?php $selected = (isset( $this->remitano_payment_button_options['default_button_style'] ) && $this->remitano_payment_button_options['default_button_style'] === 'short-purple') ? 'selected' : '' ; ?>
-			<option value="short-purple" <?php echo $selected; ?>>Short Purple</option>
+			<option value="short-purple" <?php echo esc_attr( $selected ); ?>>Short Purple</option>
 			<?php $selected = (isset( $this->remitano_payment_button_options['default_button_style'] ) && $this->remitano_payment_button_options['default_button_style'] === 'long-white') ? 'selected' : '' ; ?>
-			<option value="long-white" <?php echo $selected; ?>> Long White</option>
+			<option value="long-white" <?php echo esc_attr( $selected ); ?>> Long White</option>
 			<?php $selected = (isset( $this->remitano_payment_button_options['default_button_style'] ) && $this->remitano_payment_button_options['default_button_style'] === 'short-white') ? 'selected' : '' ; ?>
-			<option value="short-white" <?php echo $selected; ?>> Short White</option>
+			<option value="short-white" <?php echo esc_attr( $selected ); ?>> Short White</option>
 		</select> <?php
 	}
 
 	public function default_coin_currency_callback() {
 		?> <select name="remitano_payment_button_options[default_coin_currency]" id="default_coin_currency">
 			<?php $selected = (isset( $this->remitano_payment_button_options['default_coin_currency'] ) && $this->remitano_payment_button_options['default_coin_currency'] === 'usdt') ? 'selected' : '' ; ?>
-			<option value="usdt" <?php echo $selected; ?>>USDT</option>
+			<option value="usdt" <?php echo esc_attr( $selected ); ?>>USDT</option>
 		</select> <?php
 	}
 }
