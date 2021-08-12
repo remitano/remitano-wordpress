@@ -20,8 +20,13 @@
 
       var url = getApiUrl(element.dataset["sandbox"]);
       url += "?merchant_username=" + element.dataset["merchantUsername"];
-      url += "&coin_currency=" + element.dataset["coinCurrency"];
-      url += "&coin_amount=" + element.dataset["coinAmount"];
+      if (element.dataset["coinAmount"]) {
+        url += "&coin_currency=" + element.dataset["coinCurrency"];
+        url += "&coin_amount=" + element.dataset["coinAmount"];
+      } else if (element.dataset["fiatAmount"]){
+        url += "&fiat_currency=" + element.dataset["fiatCurrency"];
+        url += "&fiat_amount=" + element.dataset["fiatAmount"];
+      }
       url += "&cancelled_or_completed_callback_url=" + element.dataset["cancelledOrCompletedCallbackUrl"];
       url += "&description=" + element.dataset["description"];
 
