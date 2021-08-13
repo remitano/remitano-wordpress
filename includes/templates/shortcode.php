@@ -14,8 +14,13 @@ if ( !empty( $atts['redirect-url'] ) ) {
   class="remitano-payment-btn"
   data-sandbox="<?php echo esc_attr( $options['enable_sandbox'] ? 'true' : 'false' ); ?>"
   data-merchant-username="<?php echo esc_attr( $options['merchant_username'] ); ?>"
-  data-coin-currency="<?php echo esc_attr( $options['default_coin_currency'] ); ?>"
-  data-coin-amount="<?php echo esc_attr( $atts['amount'] ); ?>"
+  <?php if ($options['currency'] == 'USDT'): ?>
+    data-coin-currency="usdt"
+    data-coin-amount="<?php echo esc_attr( $atts['amount'] ); ?>"
+  <?php else: ?>
+    data-fiat-currency="<?php echo esc_attr( $atts['currency'] ); ?>"
+    data-fiat-amount="<?php echo esc_attr( $atts['amount'] ); ?>"
+  <?php endif; ?>
   data-description="<?php echo esc_attr( $atts['description'] ); ?>"
   data-cancelled-or-completed-callback-url="<?php echo esc_url( $redirect_url ); ?>"
 >

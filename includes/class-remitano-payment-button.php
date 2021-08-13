@@ -19,6 +19,7 @@ class Remitano_Payment_Button {
 		$atts = shortcode_atts( array(
 			'button-style' => $options['default_button_style'],
 			'redirect-url' => '',
+			'currency' => $options['default_currency'],
 			'amount' => "0",
 			'description' => "",
 		), $atts, 'payment_button_atts' );
@@ -86,9 +87,9 @@ class Remitano_Payment_Button {
 		);
 
 		add_settings_field(
-			'default_coin_currency', // id
-			'Default Coin Currency (Currently only support USDT)', // title
-			array( $this, 'default_coin_currency_callback' ), // callback
+			'default_currency', // id
+			'Default Currency', // title
+			array( $this, 'default_currency_callback' ), // callback
 			'remitano-payment-button-admin', // page
 			'remitano_payment_button_setting_section' // section
 		);
@@ -108,8 +109,8 @@ class Remitano_Payment_Button {
 			$sanitary_values['default_button_style'] = $input['default_button_style'];
 		}
 
-		if ( isset( $input['default_coin_currency'] ) ) {
-			$sanitary_values['default_coin_currency'] = $input['default_coin_currency'];
+		if ( isset( $input['default_currency'] ) ) {
+			$sanitary_values['default_currency'] = $input['default_currency'];
 		}
 
 		return $sanitary_values;
@@ -146,10 +147,19 @@ class Remitano_Payment_Button {
 		</select> <?php
 	}
 
-	public function default_coin_currency_callback() {
-		?> <select name="remitano_payment_button_options[default_coin_currency]" id="default_coin_currency">
-			<?php $selected = (isset( $this->remitano_payment_button_options['default_coin_currency'] ) && $this->remitano_payment_button_options['default_coin_currency'] === 'usdt') ? 'selected' : '' ; ?>
-			<option value="usdt" <?php echo esc_attr( $selected ); ?>>USDT</option>
+	public function default_currency_callback() {
+		?> <select name="remitano_payment_button_options[default_currency]" id="default_currency">
+			<?php 
+				$currencies = array("USDT", "AED", "ARS", "AUD", "BND", "BOB", "BRL", "BYN", "CAD", "CDF", "CFA", "CHF", "CNY", "COP",
+					  "DKK", "DZD", "EUR", "GBP", "GHS", "HKD", "IDR", "ILS", "INR", "JPY", "KES", "KRW", "LAK",
+					  "MMK", "MXN", "MYR", "NAD", "NGN", "NOK", "NPR", "NZD", "OMR", "PEN", "PHP", "PKR", "PLN",
+					  "QAR", "RUB", "RWF", "SEK", "SGD", "THB", "TRY", "TWD", "TZS", "UAH", "UGX", "USD", "VES",
+					  "VND", "XAF", "ZAR", "ZMW");
+				foreach ($currencies as $currency):
+					$selected = (isset( $this->remitano_payment_button_options['default_currency'] ) && $this->remitano_payment_button_options['default_currency'] === $currency) ? 'selected' : '' ;
+			?>
+					<option value="<?php echo esc_attr( $currency ); ?>" <?php echo esc_attr( $selected ); ?>><?php echo esc_attr( $currency ); ?></option>
+			<?php endforeach; ?>
 		</select> <?php
 	}
 }
